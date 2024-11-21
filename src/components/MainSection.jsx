@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const MainSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -9,35 +9,47 @@ const MainSection = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <div id="home" className="relative h-screen overflow-hidden mt-8">
+    <div id="home" className="relative overflow-hidden mt-16"> {/* Adjust margin to account for navbar */}
       {/* Parallax Background Image */}
       <motion.div
-        className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+        className="relative w-full z-0"
         style={{
-          backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/046/924/486/small/dynamic-splash-of-colorful-liquids-creating-stunning-abstract-art-with-vibrant-hues-on-a-gradient-background-photo.jpg')`
+          height: "300px", // Fixed image height
+          backgroundImage: `url('https://images.unsplash.com/photo-1719937051157-d3d81cc28e86?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
         initial={{ y: 0 }}
-        animate={{ y: scrollY * 0.05 }}  
+        animate={{ y: scrollY * 0.1 }} // Slow scroll for the image
         transition={{ ease: "linear", duration: 0 }}
-      />
-
-      {/* Content Section */}
-      <div 
-        className="absolute bottom-0 left-0 w-full text-white px-4 pb-8 z-10" 
-        style={{
-          transform: `translateY(-${scrollY * 0.15}px)`,  // Increased multiplier for faster movement
-        }}
       >
+        {/* Centered Text */}
+        <div
+          className="absolute inset-0 flex items-center justify-center text-white"
+          style={{
+            transform: `translateY(${scrollY * -0.6}px)`, // Faster scroll for the text
+          }}
+        >
+          <div className="text-center">
+            <h1 className="text-5xl font-bold">Welcome to the Parallax Website</h1>
+            {/* <p className="mt-4 text-lg">Scroll down to explore more</p> */}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Main Content Section */}
+      <div className="relative z-10 w-full h-screen flex items-center justify-center bg-gray-900 text-white">
         <div className="text-center">
-          <h1 className="text-5xl font-bold">Welcome to the Parallax Website</h1>
-          <p className="mt-4 text-lg">Scroll down to explore more</p>
+          <h2 className="text-4xl font-bold">Main Content Section</h2>
+          <p className="mt-4 text-lg">Here is some additional content.</p>
         </div>
       </div>
     </div>
@@ -45,5 +57,3 @@ const MainSection = () => {
 };
 
 export default MainSection;
-
-
