@@ -39,4 +39,3 @@ const MainContentSection = () => {
 
 export default MainContentSection;
 
-
