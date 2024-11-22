@@ -9,10 +9,11 @@ const SecondParallaxSection = ({ scrollY }) => {
         style={{
           height: "300px", // Set image height to 300px
           backgroundImage: `url('https://images.unsplash.com/photo-1483982258113-b72862e6cff6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+        //   backgroundImage: `url('https://i.pinimg.com/1200x/9b/aa/c0/9baac0a0297414a73189675fd8db448f.jpg')`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          transform: `translateY(-${scrollY * 0.4}px)`, // Image moves faster
+          transform: `translateY(-${scrollY * 0.2}px)`, // Image moves faster
         }}
       >
         {/* Text Section (moves slower) */}
